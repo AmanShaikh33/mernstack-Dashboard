@@ -58,7 +58,7 @@ export const UserContextProvider = ({ children }) => {
       }, {
         withCredentials: true,
       });
-
+         console.log("Logging in with:", { email, password });
       toast.success(data.message);
       setIsAuth(true);
       setUser(data.user);
