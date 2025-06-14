@@ -13,7 +13,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://your-frontend-url.onrender.com' // 🔁 Replace this once your frontend is deployed
+    'https://mern-frontend-9h2x.onrender.com'
   ],
   credentials: true,
   maxAge: 14400,
