@@ -32,6 +32,10 @@ app.use("/api/auth", authRoutes);
 app.use('/api/mood', moodRoutes);
 app.use('/api/user', userRoutes);
 
+app.get("/", (req, res) => {
+  res.send("🟢 Backend is live on Render!");
+});
+
 // Server start
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
