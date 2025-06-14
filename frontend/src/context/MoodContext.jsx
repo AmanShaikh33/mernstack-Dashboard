@@ -16,7 +16,7 @@ export const MoodContextProvider = ({ children }) => {
   setLoading(true);
   try {
     const { data } = await axios.post(
-      "http://localhost:8000/api/mood/track",
+      "https://mernstack-dashboard.onrender.com/api/mood/track",
       { mood: selectedMood, emoji, summary },
       { withCredentials: true }
     );
@@ -37,7 +37,7 @@ export const MoodContextProvider = ({ children }) => {
     
 
       const { data } = await axios.get(
-        "http://localhost:8000/api/mood/history",
+        "https://mernstack-dashboard.onrender.com/api/mood/history",
          {
   withCredentials: true, // 🔴 This sends the cookie with the request
 }

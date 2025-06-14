@@ -13,7 +13,7 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8000/api/user/me", {
+        const { data } = await axios.get("https://mernstack-dashboard.onrender.com/api/user/me", {
           withCredentials: true,
         });
         setUser(data);
@@ -33,7 +33,7 @@ export const UserContextProvider = ({ children }) => {
   async function registerUser(formdata, navigate, fetchPosts) {
     setLoading(true);
     try {
-      const { data } = await axios.post("http://localhost:8000/api/auth/register", formdata, {
+      const { data } = await axios.post("https://mernstack-dashboard.onrender.com/api/auth/register", formdata, {
         withCredentials: true,
       });
       toast.success(data.message);
@@ -52,7 +52,7 @@ export const UserContextProvider = ({ children }) => {
   async function loginUser(email, password, navigate, fetchPosts) {
     setLoading(true);
     try {
-      const { data } = await axios.post("http://localhost:8000/api/auth/login", {
+      const { data } = await axios.post("https://mernstack-dashboard.onrender.com/api/auth/login", {
         email,
         password,
       }, {
@@ -74,7 +74,7 @@ export const UserContextProvider = ({ children }) => {
   // ✅ Logout function
   async function logoutUser(navigate) {
     try {
-      const { data } = await axios.get("http://localhost:8000/api/auth/logout", {
+      const { data } = await axios.get("https://mernstack-dashboard.onrender.com/api/auth/logout", {
         withCredentials: true,
       });
       if (data.message) {
@@ -92,7 +92,7 @@ export const UserContextProvider = ({ children }) => {
   async function updateAvatar(avatarUrl) {
     try {
       const { data } = await axios.put(
-        "http://localhost:8000/api/user/avatar",
+        "https://mernstack-dashboard.onrender.com/api/user/avatar",
         { avatar: avatarUrl },
         {
           withCredentials: true,
