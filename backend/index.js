@@ -11,12 +11,8 @@ const app = express();
 
 // ✅ CORS Setup — Allow both local and deployed frontend
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://mern-frontend-9h2x.onrender.com'
-  ],
-  credentials: true,
-  maxAge: 14400,
+  origin: "https://mern-frontend-9h2x.onrender.com",
+  credentials: true, // This is IMPORTANT if you're using cookies (like JWT in cookies)
 }));
 
 // Middleware
