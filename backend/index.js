@@ -2,58 +2,39 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDb } from './database/db.js';
-import axios from 'axios';
 import cookieParser from "cookie-parser";
-import { loginUser } from './controllers/authController.js';
 
-
-
-const url = `http://localhost:8000`;
-
-const interval = 30000;
-
-function reloadWebsite() {
-  axios
-    .get(url)
-    .then((response) => {
-      console.log(
-        `Reloaded at ${new Date().toISOString()}: Status Code ${
-          response.status
-        }`
-      );
-    })
-    .catch((error) => {
-      console.error(
-        `Error reloading at ${new Date().toISOString()}:`,
-        error.message
-      );
-    });
-}
-
-setInterval(reloadWebsite, interval);
-
+// Load environment variables
 dotenv.config();
 
 const app = express();
+
+// ✅ CORS Setup — Allow both local and deployed frontend
 app.use(cors({
-  origin: 'http://localhost:5173',  // frontend origin
+  origin: [
+    'http://localhost:5173',
+    'https://your-frontend-url.onrender.com' // 🔁 Replace this once your frontend is deployed
+  ],
   credentials: true,
   maxAge: 14400,
 }));
+
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
 
+// Routes
 import authRoutes from "./routes/authRoutes.js";
 import moodRoutes from './routes/moodRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-
 
 app.use("/api/auth", authRoutes);  
 app.use('/api/mood', moodRoutes);
 app.use('/api/user', userRoutes);
 
+// Server start
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
-  console.log(`app listening on http://localhost:${port}`);
+  console.log(`✅ Server running at http://localhost:${port}`);
   connectDb();
 });
