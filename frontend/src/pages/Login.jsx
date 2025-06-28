@@ -13,63 +13,58 @@ const Login = () => {
     e.preventDefault();
     loginUser(email, password, navigate);
   };
+
   return (
     <>
       {loading ? (
-        <h1>Loading...</h1>
+        <h1 className="text-white text-center text-2xl mt-10">Loading...</h1>
       ) : (
-        <div className="bg-gradient-to-r from-[#1A202C] to-[#1E3A47] h-screen w-full flex justify-center items-center">
-          <div className="w-[370px] lg:w-[430px] h-[610px] bg-gradient-to-r from-[#2D3748] to-[#4A5568] lg:translate-x-[420px] rounded-md flex flex-col items-center fixed">
-            <div className="">
-              <div className="text-xl cursor-pointer flex flex-col justify-center items-center ">
-                <h1 className="text-3xl font-bold text-white mb-[30px] mt-[30px]">
-                 HUDDLE
-                </h1>
-              </div>
+        <div className="min-h-screen w-full bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-950 flex items-center justify-center px-4">
+          <div className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl">
+            <h1 className="text-3xl font-extrabold text-center text-cyan-400 mb-2">
+              GamifyDashboard
+            </h1>
+            <p className="text-white text-center mb-6">Welcome back, log in</p>
 
-              <form onSubmit={submitHandler}>
-                <div className="flex flex-col justify-center items-center m-2 space-y-6 md:space-y-8">
-                  <input
-                    type="email"
-                    className="w-[300px] lg:w-[340px] h-[43px] bg-transparent border border-[#14B8A6] rounded-sm p-4 text-white"
-                    placeholder="User Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    
-                  />
-                  <input
-                    type="password"
-                    className="w-[300px] lg:w-[340px] h-[43px] bg-transparent border border-[#14B8A6] rounded-sm p-4 text-white"
-                    placeholder="User Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="text-center mt-7">
-                  <button className="w-[300px] lg:w-[340px] h-[35px] bg-[#14B8A6] font-bold text-white text-[13px] rounded-sm">Login</button>
-                </div>
-              </form>
-            </div>
-            
-            <div className="h-[1px] w-[300px] lg:w-[340px] bg-white mt-[50px] mb-[15px]"></div>
+            <form onSubmit={submitHandler} className="space-y-5">
+              <input
+                type="email"
+                placeholder="User Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full p-3 rounded-lg bg-white/10 border border-cyan-400 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              />
+              <input
+                type="password"
+                placeholder="User Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full p-3 rounded-lg bg-white/10 border border-cyan-400 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              />
 
-            
-              <div className="text-white text-base font-semibold text-center mt-[10px] space-y-2 m-2">
-                <h1 className="text-2xl lg:text-3xl">Don't Have Account?</h1>
-                <h1>SIGN UP to HUDDLE</h1>
-               
-              </div>
+              <button
+                type="submit"
+                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition"
+              >
+                Login
+              </button>
+            </form>
+
+            <div className="border-t border-white/20 mt-8 pt-6 text-center">
+              <p className="text-white text-sm mb-3">
+                Don't have an account?
+              </p>
               <Link
-                  to="/register"
-                  className="w-[300px] lg:w-[340px] h-[35px] bg-[#14B8A6] font-bold text-white text-[16px] rounded-sm text-center pt-[5px] mt-[30px]"
-                >
-                  SIGN UP
-                </Link>
+                to="/register"
+                className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-medium px-6 py-2 rounded-lg transition"
+              >
+                Sign Up
+              </Link>
             </div>
           </div>
-        
+        </div>
       )}
     </>
   );
